@@ -1,4 +1,4 @@
-Winlogger Package
+WinEvtWriter Package
 =================
 
 This package is designed to wrap the Windows Event log package (golang.org/x/sys/windows/svc/eventlog) and allow it to work with the base go logging package.  Using the "syslog" package as an example of how to do this, so you will find many of the same methoods.  Also thanks to Kardianos (github.com/kardianos) as I used some of his code as a refrence for how to use the eventlog package.
@@ -13,28 +13,9 @@ NOTE:  priority can be one of the following:
 - EVENTLOG_WARNING_TYPE
 - EVENTLOG_INFORMATION_TYPE
 
-```go
-package main
-
-import(
-    "log"
-    "github.com/xphyr/winlogger"
-)
-
-func main() {
-
-    // Configure logger to write to the syslog. You could do this in init(), too.
-    logwriter, e := winlogger.New(windows.EVENTLOG_ERROR_TYPE, "myprog")
-    if e == nil {
-        log.SetOutput(logwriter)
-    }
-
-    // Now from anywhere else in your program, you can use this:
-    log.Print("Hello Logs!")
-}
-```
+See the code in the example directory, which should compile on any OS.
 
 bugs
 ----
 
-as of right now there are none (or perhaps the entire package could be considered a bug since it doesnt work)
+as of right now there are none.  Of course I have only used the test code, so I am sure there are bugs all over the place.
